@@ -143,7 +143,7 @@ You can use the packaging module to generate a package on hdfs based on your cur
 (You should have installed the dependencies from `requirements.txt` first `pip install -r requirements.txt`)
 This works if you use conda and virtual environments.
 
-By default the generated package is a [pex][pex] package.
+By default the generated package is a [pex][pex] package, unless an Anaconda installation is detected.
 
 ```python
 pyenv_zip_path, env_name = packaging.upload_env_to_hdfs()
@@ -152,7 +152,7 @@ run_on_yarn(
 )
 ```
 
-By specifiying your own packaging.CONDA_PACKER to `upload_env_to_hdfs` it will use [conda-pack][conda-pack] to create the package.
+On the other hand, if an Anaconda installation, or if you specify `packer=packaging.CONDA_PACKER`  to `upload_env_to_hdfs`, it will use [conda-pack][conda-pack] to create the package.
 
 You can also directly use the command line tools provided by [conda-pack][conda-pack] and [pex][pex]
 
